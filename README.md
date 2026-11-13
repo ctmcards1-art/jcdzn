@@ -12,7 +12,7 @@ Two pages, `index.html` and `about.html`, share `styles.css`. No build step.
 ## Before launch
 
 - **Domain:** `CNAME` sets the custom domain to jcdzn.com; the domain's DNS points at GitHub Pages.
-- **Activate the contact form:** submit the form once on the live site. FormSubmit emails an activation link to ctmcards1@gmail.com; click it, and every later inquiry is emailed there with a copy to jackcaricofe22@gmail.com.
+- **Activate the contact form:** submit the form once on the live site. FormSubmit emails an activation link to ctmcards1@gmail.com; click it, and every later inquiry is emailed there with a copy to jackcaricofe222@gmail.com.
 
 ## Hosting on GitHub Pages
 
