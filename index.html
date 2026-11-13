@@ -162,9 +162,12 @@
 </footer>
 
 <script>
-  // Contact form: sends to FormSubmit, which emails Colby and copies Jack
-  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/ctmcards1@gmail.com';
-  const FORM_CC = 'jackcaricofe222@gmail.com';
+  // Contact form: sends each inquiry to Colby and to Jack as two separate
+  // FormSubmit emails. Each address activates once via FormSubmit's first email.
+  const FORM_ENDPOINTS = [
+    'https://formsubmit.co/ajax/ctmcards1@gmail.com',
+    'https://formsubmit.co/ajax/jackcaricofe222@gmail.com'
+  ];
   const form = document.getElementById('contact-form');
   const status = document.getElementById('cf-status');
   const sendBtn = document.getElementById('cf-send');
@@ -183,16 +186,18 @@
     status.dataset.state = '';
     status.textContent = '';
     try {
-      const res = await fetch(FORM_ENDPOINT, {
+      const body = JSON.stringify({
+        name: d.name, email: d.email, need: d.type, message: d.message || '',
+        _replyto: d.email, _template: 'table',
+        _subject: 'New website inquiry: ' + d.type + ' from ' + d.name
+      });
+      const results = await Promise.allSettled(FORM_ENDPOINTS.map(url => fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          name: d.name, email: d.email, need: d.type, message: d.message || '',
-          _replyto: d.email, _cc: FORM_CC, _template: 'table',
-          _subject: 'New website inquiry: ' + d.type + ' from ' + d.name
-        })
-      });
-      if (!res.ok) throw new Error(res.status);
+        body
+      })));
+      const anySent = results.some(r => r.status === 'fulfilled' && r.value.ok);
+      if (!anySent) throw new Error('not sent');
       form.reset();
       status.dataset.state = 'sent';
       status.textContent = 'Message sent. We\'ll reply within a day.';
