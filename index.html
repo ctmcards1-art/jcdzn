@@ -11,6 +11,15 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
+<!-- META PIXEL: paste your Pixel ID between the quotes to turn on ad tracking. Empty = off. -->
+<script>
+  window.META_PIXEL_ID = '';
+  if (window.META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', window.META_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+</script>
 </head>
 <body>
 
@@ -22,7 +31,7 @@
       <a href="#services">What we build</a>
       <a href="#process">How it works</a>
       <a href="about.html">About us</a>
-      <a class="nav-cta" href="#contact">Start a project</a>
+      <a class="nav-cta" href="#contact">Free preview</a>
     </nav>
   </div>
 </header>
@@ -35,8 +44,8 @@
     </div>
     <h1>Custom websites for small businesses, coaches and brands.</h1>
     <div class="hero-row">
-      <p>Online stores, lesson booking, subscriptions and content sites, designed and coded from scratch in Maine by two people you'll talk to directly.</p>
-      <a class="btn" href="#contact">Start a project</a>
+      <p>Online stores, lesson booking, subscriptions and content sites, designed and coded from scratch in Maine by two people you'll talk to directly. Not sure yet? We'll build you a free, working preview first.</p>
+      <a class="btn" href="#contact">Get a free preview</a>
     </div>
   </div>
 
@@ -118,8 +127,8 @@
           <p>A quick call about what you sell, who buys it and what the site needs to do. You get a plan and a price before anything starts.</p>
         </li>
         <li>
-          <h3>See it take shape</h3>
-          <p>We send you a working preview link early, so you can click through it and ask for changes before launch.</p>
+          <h3>See a free preview</h3>
+          <p>We build a working preview of your site for free and send you the link. Click through it on your phone, ask for changes, then decide.</p>
         </li>
         <li>
           <h3>Launch on your domain</h3>
@@ -133,8 +142,9 @@
 <section class="contact" id="contact" aria-labelledby="contact-title">
   <div class="wrap">
     <div>
-      <h2 id="contact-title">Start a project</h2>
-      <p>Tell us what you're working on and what the site needs to do. We'll reply within a day with next steps.</p>
+      <h2 id="contact-title">Get a free preview</h2>
+      <p>Tell us about your business. We'll build a free, working preview of your homepage and send you the link. Like it? We finish the site. Don't? You owe nothing.</p>
+      <p>We reply within a day.</p>
     </div>
     <!--
       CONTACT FORM: submissions go through FormSubmit (formsubmit.co) and are
@@ -147,6 +157,7 @@
       <label for="cf-email">Email <input id="cf-email" type="email" name="email" autocomplete="email" required></label>
       <label for="cf-type">What do you need?
         <select id="cf-type" name="type">
+          <option>Free preview of my site</option>
           <option>Online store</option>
           <option>Booking site</option>
           <option>Subscriptions</option>
@@ -165,7 +176,7 @@
 <footer>
   <div class="wrap">
     <span>&copy; <span id="yr">2026</span> J C Designs. Custom websites, built in Maine.</span>
-    <nav aria-label="Footer"><a href="about.html">About us</a><a href="https://www.linkedin.com/in/colby-moholland-ba1946391/" target="_blank" rel="noopener">Colby on LinkedIn</a><a href="https://www.linkedin.com/in/jack-caricofe-293b00419/" target="_blank" rel="noopener">Jack on LinkedIn</a></nav>
+    <nav aria-label="Footer"><a href="about.html">About us</a><a href="privacy.html">Privacy</a><a href="https://www.linkedin.com/in/colby-moholland-ba1946391/" target="_blank" rel="noopener">Colby on LinkedIn</a><a href="https://www.linkedin.com/in/jack-caricofe-293b00419/" target="_blank" rel="noopener">Jack on LinkedIn</a></nav>
   </div>
 </footer>
 
@@ -238,6 +249,7 @@
       const anySent = results.some(r => r.status === 'fulfilled' && r.value.ok);
       if (!anySent) throw new Error('not sent');
       form.reset();
+      if (window.fbq) fbq('track', 'Lead', { content_name: d.type });
       status.dataset.state = 'sent';
       status.textContent = 'Message sent. We\'ll reply within a day.';
       sendBtn.textContent = 'Sent';

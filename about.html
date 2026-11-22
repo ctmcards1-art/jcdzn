@@ -11,6 +11,15 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
+<!-- META PIXEL: paste your Pixel ID between the quotes to turn on ad tracking. Empty = off. -->
+<script>
+  window.META_PIXEL_ID = '';
+  if (window.META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', window.META_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+</script>
 </head>
 <body>
 
@@ -22,7 +31,7 @@
       <a href="index.html#services">What we build</a>
       <a href="index.html#process">How it works</a>
       <a href="about.html" aria-current="page">About us</a>
-      <a class="nav-cta" href="index.html#contact">Start a project</a>
+      <a class="nav-cta" href="index.html#contact">Free preview</a>
     </nav>
   </div>
 </header>
@@ -73,14 +82,14 @@
       <h2>Have a site in mind?</h2>
       <p>Tell us what you're working on and we'll reply within a day with next steps.</p>
     </div>
-    <div><a class="btn" href="index.html#contact">Start a project</a></div>
+    <div><a class="btn" href="index.html#contact">Get a free preview</a></div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span>&copy; 2026 J C Designs. Custom websites, built in Maine.</span>
-    <nav aria-label="Footer"><a href="index.html">Home</a><a href="https://www.linkedin.com/in/colby-moholland-ba1946391/" target="_blank" rel="noopener">Colby on LinkedIn</a><a href="https://www.linkedin.com/in/jack-caricofe-293b00419/" target="_blank" rel="noopener">Jack on LinkedIn</a></nav>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="privacy.html">Privacy</a><a href="https://www.linkedin.com/in/colby-moholland-ba1946391/" target="_blank" rel="noopener">Colby on LinkedIn</a><a href="https://www.linkedin.com/in/jack-caricofe-293b00419/" target="_blank" rel="noopener">Jack on LinkedIn</a></nav>
   </div>
 </footer>
 
